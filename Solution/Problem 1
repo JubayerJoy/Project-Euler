@@ -1,0 +1,78 @@
+/* 
+   Problem no      : 1
+   Name            : Multiples of 3 and 5
+   
+   Solution Author : Jubayer Abdullah Joy
+   Date            : 29/10/18
+   
+   Theory          : In this problem you can take number that are divisible by three and then 5 after 
+                     that you must remove the divisibles of 3 and 5 from the summation as they are added
+                     two times.
+            
+   Pitfall 1 - TLE : If you want to iterate over all number from 1 to 10e9, this will cause a TLE as 
+                     most you can get is 10e7 in 1 second to avoid TLE.
+                      
+   Pitfall 2 - WA  : As the Answer may produce huge output that can't be contained in 'int' data type,
+                     you should use 'long long' for this purpose.
+                     
+*/
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int t, a;
+
+    cin>>t;
+
+    while(t--)
+    {
+        cin>>a;
+
+        long long c = 0, n = ceil(a/3.0);
+
+        c = 3*(n*(n-1)/2);
+
+        n= ceil(a/5.0);
+        c += 5*(n*(n-1)/2);
+
+        n= ceil(a/15.0);
+        c -= 15*(n*(n-1)/2);
+
+
+
+        cout<<c<<el;
+    }
+    die;
+}
+
+/***[Pitfalls]***/
+
+/* TLE
+
+  int c = 0;
+
+        for(int i =2; i<a; i++)
+            if(i%3==0||i%5==0)
+                c+=i;
+
+        cout<<c<<el;
+        
+*/
+
+/* WA
+
+    int c = 0, n = ceil(a/3.0);
+
+        c = 3*(n*(n-1)/2);
+
+        n= ceil(a/5.0);
+        c += 5*(n*(n-1)/2);
+
+        n= ceil(a/15.0);
+        c -= 15*(n*(n-1)/2);
+        
+        cout<<c<<el;
+*/
