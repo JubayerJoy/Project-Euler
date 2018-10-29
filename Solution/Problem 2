@@ -1,0 +1,91 @@
+/* 
+   Problem no      : 2
+   Name            : Even Fibonacci Numbers
+   
+   Solution Author : Jubayer Abdullah Joy
+   Date            : 29/10/18
+   
+   Theory          : f(n) = 4*f(n-1) + f(n-2) [ where n is a even Fibonacci number ]
+            
+   Pitfall 1 - TLE : If Answer gets TLE then it is because the loop termination perameter used is incorret.
+                      
+   Pitfall 2 - WA  : As the Answer may produce huge output that can't be contained in 'int' data type,
+                     you should use 'long long' for this purpose.
+                     
+*/
+
+#pragma GCC optimize("O3")
+
+#include<bits/stdc++.h>
+
+#define    pi        3.141592653589793
+#define    spc       " "
+#define    el        "\n"
+#define    die       return 0
+#define    ios       ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+#define    ll        long long
+#define    ld        long double
+#define    pb        push_back
+#define    pf        push_front
+#define    bitcount  __builtin_popcount
+#define    gcd       __gcd
+
+
+using namespace std;
+
+
+int main()
+{
+    ll t, n;
+
+    cin>>t;
+
+    while(t--)
+    {
+        ll b = 2, p =0, sum = 2, calc;
+        cin>>n;
+
+        while((calc = b*4+ p)<n)
+        {
+            sum += calc;
+            p = b;
+            b = calc;
+        }
+        cout<<sum<<el;
+    }
+    die;
+}
+
+
+
+/**
+        f(n) = f(n-1) + f(n-2) = [f(n-2) + f(n-3)] + f(n-2)
+    =>  f(n) = 2*f(n-2) + f(n-3)
+
+    As from the following equation it can be described that if a number is even in Fibonacci Sequence
+    there will be another even number in third position from it.
+
+**/
+
+/**
+    We have made code more efficient as f(n) = 4*f(n-1) + f(n-2) [ where n is a even Fibonacci number ]
+**/
+
+/**
+    There is Another way that uses golden ratio (Phi = (1+sqrt(5))/2) that is approximate ratio between
+    two consecutive terms in a Fibonacci sequence. It can be shown that every 3rd number in the sequence
+    is even number so, Ratio is boosted  by pow(Phi,3)=4.236068 to get the even values.
+
+    and then each time just multiply it to the previous value until it hit the provided limit. The closest
+    Integer is the desired even Fibonacci number.
+
+    begin        = 2;
+    2 * 4.236068 = 8.472136   = 8;  [ As less then .5]
+    8 * 4.236068 = 33.888544  = 34; [ As it is more then .5]
+    34* 4.236068 = 144.026312 = 144;
+    ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+    ...   ...   ...   ...   ...   ...   ...   ...   ...   ...   ...
+
+    and just take sum in another variable to give output.
+
+**/
