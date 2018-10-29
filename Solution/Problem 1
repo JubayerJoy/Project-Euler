@@ -43,9 +43,9 @@ int main()
 
 
 
-        cout<<c<<el;
+        cout<<c<<'\n';
     }
-    die;
+    return 0;
 }
 
 /***[Pitfalls]***/
@@ -58,7 +58,7 @@ int main()
             if(i%3==0||i%5==0)
                 c+=i;
 
-        cout<<c<<el;
+        cout<<c<<endl;
         
 */
 
@@ -74,5 +74,5 @@ int main()
         n= ceil(a/15.0);
         c -= 15*(n*(n-1)/2);
         
-        cout<<c<<el;
+        cout<<c<<endl;
 */
